@@ -29,6 +29,7 @@ public class MyPort {
             //настраиваем мониторинг за определенными событиями порта
             port.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN |
                     SerialPort.FLOWCONTROL_RTSCTS_OUT);
+            //SerialPort.MASK_RXCHAR - Готовим маску
             port.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
             setBaudRate(portBaudRate);
             return !opened;
@@ -69,10 +70,19 @@ public class MyPort {
         return port.getPortName();
     }
 
+
+    /*
+     * In this class must implement the method serialEvent, through it we learn about
+     * events that happened to our port. But we will not report on all events but only
+     * those that we put in the mask. In this case the arrival of the data and change the
+     * status lines CTS and DSR
+     */
     private class PortReader implements SerialPortEventListener {
 
         public void serialEvent(SerialPortEvent event) {
+            //If data is available. Check bytes count in the input buffer
             if (event.isRXCHAR() && event.getEventValue() > 0) {
+                //Read data, if 10 bytes available
                 try {
                     String receivedData = port.readString(event.getEventValue());
                     System.out.println("\tReceived response: " + receivedData);
