@@ -63,7 +63,7 @@ public class SerialPortImpl implements SerialPort {
             isOpened = serialPort.openPort();
             serialPort.setFlowControlMode(jssc.SerialPort.FLOWCONTROL_RTSCTS_IN |
                     jssc.SerialPort.FLOWCONTROL_RTSCTS_OUT);
-            serialPort.addEventListener((event) -> {
+            serialPort.addEventListener(event -> {
                 if (event.isRXCHAR() && event.getEventValue() > 0) {
                     try {
                         String receivedMessage = serialPort.readString(event.getEventValue());
