@@ -3,7 +3,6 @@ package by.bsuir.toks.laba2.serial_api.serial_port;
 import jssc.SerialPortException;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 import static by.bsuir.toks.laba2.serial_api.byte_stuffing.ByteStaffingService.doUnStaffing;
 
@@ -24,14 +23,14 @@ public class SerialPortImpl implements SerialPort {
         isOpened = false;
     }
 
-    public Optional<byte[]> read(int bytesCount) {
-        try {
-            return Optional.of(serialPort.readBytes(bytesCount));
-        } catch (SerialPortException e) {
-            e.printStackTrace();
-            return Optional.empty();
-        }
-    }
+//    public Optional<byte[]> read(int bytesCount) {
+//        try {
+//            return Optional.of(serialPort.readBytes(bytesCount));
+//        } catch (SerialPortException e) {
+//            e.printStackTrace();
+//            return Optional.empty();
+//        }
+//    }
 
     @Override
     public String getSerialPortName() {
@@ -42,14 +41,14 @@ public class SerialPortImpl implements SerialPort {
         return serialPortBaudRate;
     }
 
-    public Optional<byte[]> read() {
-        try {
-            return Optional.of(serialPort.readBytes());
-        } catch (SerialPortException e) {
-            e.printStackTrace();
-            return Optional.empty();
-        }
-    }
+//    public Optional<byte[]> read() {
+//        try {
+//            return Optional.of(serialPort.readBytes());
+//        } catch (SerialPortException e) {
+//            e.printStackTrace();
+//            return Optional.empty();
+//        }
+//    }
 
     public void write(byte[] bytesForWrite) {
         try {
@@ -106,11 +105,11 @@ public class SerialPortImpl implements SerialPort {
         }
     }
 
-    public void setParameters(int baudRate, int dataBits, int stopBits, int parity) {
-        try {
-            serialPort.setParams(baudRate, dataBits, stopBits, parity);
-        } catch (SerialPortException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void setParameters(int baudRate, int dataBits, int stopBits, int parity) {
+//        try {
+//            serialPort.setParams(baudRate, dataBits, stopBits, parity);
+//        } catch (SerialPortException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
