@@ -7,7 +7,7 @@ public class ByteStaffingService {
     public static final char ESCAPE_SEQUENCE = '\\';
 
     private ByteStaffingService() {
-        throw new IllegalStateException("Byte Staffing Service class");
+        throw new IllegalStateException("Byte staffing service class");
     }
 
     public static byte[] doStaffing(String message) {

@@ -15,7 +15,7 @@ public class Main {
             System.exit(-1);
         }
 
-        System.out.println("Program was successfully terminated");
+        System.out.println("Program was successfully finished");
 
         System.exit(0);
     }

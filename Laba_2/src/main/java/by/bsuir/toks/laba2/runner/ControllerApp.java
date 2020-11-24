@@ -5,9 +5,10 @@ import by.bsuir.toks.laba2.serial_api.async_serial_port_pair.exception.CannotClo
 import by.bsuir.toks.laba2.serial_api.serial_port.SerialPortImpl;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class ControllerApp {
-    private static final String USER_MENU = "1 - Send message to server\n"
+    private static final String USER_MENU = "\t\t\tMENU\n1 - Send message to server\n"
             + "2 - Send message to client\n"
             + "3 - Set up minimal baud rate\n"
             + "4 - Set up maximal baud rate\n"
@@ -48,14 +49,14 @@ public class ControllerApp {
 
                         // you can add async computation using runAsync method from CompletableFuture class
                         portPair.sendMessage(scanner.next(), AsyncSerialPortPair.SERVER);
-                        Thread.sleep(2, 500);
+                        TimeUnit.MILLISECONDS.sleep(5);
                         break;
                     case 2:
                         System.out.printf(INPUT_MESSAGE_INVITATION,
                                 portPair.getSerialPortName(AsyncSerialPortPair.SERVER),
                                 portPair.getSerialPortBaudRate(AsyncSerialPortPair.SERVER));
                         portPair.sendMessage(scanner.next(), AsyncSerialPortPair.CLIENT);
-                        Thread.sleep(2, 500);
+                        TimeUnit.MILLISECONDS.sleep(5);
                         break;
                     case 3:
                         portPair.setBaudRate(SerialPortImpl.BAUD_RATE_110,

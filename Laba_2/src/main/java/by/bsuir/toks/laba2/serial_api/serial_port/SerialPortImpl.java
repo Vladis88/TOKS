@@ -23,14 +23,6 @@ public class SerialPortImpl implements SerialPort {
         isOpened = false;
     }
 
-//    public Optional<byte[]> read(int bytesCount) {
-//        try {
-//            return Optional.of(serialPort.readBytes(bytesCount));
-//        } catch (SerialPortException e) {
-//            e.printStackTrace();
-//            return Optional.empty();
-//        }
-//    }
 
     @Override
     public String getSerialPortName() {
@@ -39,23 +31,6 @@ public class SerialPortImpl implements SerialPort {
 
     public int getSerialPortBaudRate() {
         return serialPortBaudRate;
-    }
-
-//    public Optional<byte[]> read() {
-//        try {
-//            return Optional.of(serialPort.readBytes());
-//        } catch (SerialPortException e) {
-//            e.printStackTrace();
-//            return Optional.empty();
-//        }
-//    }
-
-    public void write(byte[] bytesForWrite) {
-        try {
-            serialPort.writeBytes(bytesForWrite);
-        } catch (SerialPortException e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean open() {
@@ -104,6 +79,32 @@ public class SerialPortImpl implements SerialPort {
             e.printStackTrace();
         }
     }
+
+    public void write(byte[] bytesForWrite) {
+        try {
+            serialPort.writeBytes(bytesForWrite);
+        } catch (SerialPortException e) {
+            e.printStackTrace();
+        }
+    }
+
+//        public Optional<byte[]> read(int bytesCount) {
+//        try {
+//            return Optional.of(serialPort.readBytes(bytesCount));
+//        } catch (SerialPortException e) {
+//            e.printStackTrace();
+//            return Optional.empty();
+//        }
+//    }
+
+//        public Optional<byte[]> read() {
+//        try {
+//            return Optional.of(serialPort.readBytes());
+//        } catch (SerialPortException e) {
+//            e.printStackTrace();
+//            return Optional.empty();
+//        }
+//    }
 
 //    public void setParameters(int baudRate, int dataBits, int stopBits, int parity) {
 //        try {
