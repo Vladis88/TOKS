@@ -47,7 +47,7 @@ public class Main extends Application {
 
         timer = new Timer();
 
-        stations.get(0).getStartButton().setOnAction((event) -> {
+        stations.get(0).getStartButton().setOnAction(event -> {
             aPackage = new Package();
             for (int i = 2; i >= 0; i--) {
                 int currentStation = i;
@@ -101,8 +101,7 @@ public class Main extends Application {
     public void sendPackage(Station station) {
         if (!station.getInputArea().getText().equals("")
                 && !station.getDestination().equals("")
-                && aPackage.getControl() == 0
-                && aPackage != null) {
+                && aPackage.getControl() == 0) {
             if (station.getTokenText().getText().equals("*")) {
                 if (station.getDestination().equals("1")) {
                     station.setDestinationAddress(addresses[0]);
