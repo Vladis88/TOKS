@@ -69,25 +69,23 @@ public class Main extends Application {
         stations.get(2).getTokenText().textProperty().addListener(observable -> sendPackage(stations.get(2)));
     }
 
-    public static void stationRoutine(Station station, Package aPackageage) {
+    public static void stationRoutine(Station station, Package aPackage) {
         try {
-            if (aPackageage.getControl() == 0) {
-                aPackageage.setSource(station.getSourceAddress());
-                aPackageage.setDestination(station.getDestinationAddress());
-                aPackageage.setMonitor(station.getMonitor());
+            if (aPackage.getControl() == 0) {
+                aPackage.setDestination(station.getDestinationAddress());
             } else {
                 runOnUIThread(() -> {
-                    if (aPackageage.getDestination() == station.getSourceAddress()) {
+                    if (aPackage.getDestination() == station.getSourceAddress()) {
                         String data = "";
-                        data += (char) aPackageage.getData();
+                        data += (char) aPackage.getData();
 
-                        aPackageage.setStatus((byte) 1);
+                        aPackage.setStatus((byte) 1);
                         station.getOutputArea().appendText(data);
                     }
-                    if (aPackageage.getStatus() == 1 && station.getMonitor() == 1) {
-                        aPackageage.setControl((byte) 0);
-                        aPackageage.freeData();
-                        aPackageage.setStatus((byte) 0);
+                    if (aPackage.getStatus() == 1 && station.getMonitor() == 1) {
+                        aPackage.setControl((byte) 0);
+                        aPackage.freeData();
+                        aPackage.setStatus((byte) 0);
                     }
                 });
             }
@@ -118,9 +116,6 @@ public class Main extends Application {
 
                 aPackage.setControl((byte) 1);
                 aPackage.setDestination(station.getDestinationAddress());
-                aPackage.setSource(station.getSourceAddress());
-                aPackage.setMonitor(station.getMonitor());
-
                 String reduced = station.getInputArea().getText().substring(1);
                 aPackage.setData(station.getInputArea().getText().getBytes()[0]);
                 station.getInputArea().setText(reduced);

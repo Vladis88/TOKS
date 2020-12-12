@@ -5,11 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -26,7 +22,6 @@ public class Station {
     private TextArea outputArea;
     private Text tokenText;
     private final Text sourceText;
-    private Button send;
     private Button start;
 
     Station(byte source, byte dest, byte monitor) {
@@ -54,10 +49,6 @@ public class Station {
 
     public byte getMonitor() {
         return monitor;
-    }
-
-    public Button getSendButton() {
-        return send;
     }
 
     public Button getStartButton() {
