@@ -11,6 +11,7 @@ public class ByteStaffingService {
     }
 
     public static byte[] doStaffing(String message) {
+//        StringBuilder string = new StringBuilder();
         StringBuilder staffedMessage = new StringBuilder();
         message = FLAG_SEQUENCE + message + FLAG_SEQUENCE;
 
@@ -23,7 +24,10 @@ public class ByteStaffingService {
                 staffedMessage.append(message.charAt(i));
             }
         }
-
+       /* for (byte i : staffedMessage.toString().getBytes()) {
+            string.append(Integer.toBinaryString(i));
+        }
+        System.out.println("\t\t\t"+string);*/
         return staffedMessage.toString().getBytes(StandardCharsets.UTF_8);
     }
 

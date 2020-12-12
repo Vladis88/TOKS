@@ -49,14 +49,14 @@ public class ControllerApp {
 
                         // you can add async computation using runAsync method from CompletableFuture class
                         portPair.sendMessage(scanner.next(), AsyncSerialPortPair.SERVER);
-                        TimeUnit.MILLISECONDS.sleep(5);
+                        TimeUnit.MILLISECONDS.sleep(10);
                         break;
                     case 2:
                         System.out.printf(INPUT_MESSAGE_INVITATION,
                                 portPair.getSerialPortName(AsyncSerialPortPair.SERVER),
                                 portPair.getSerialPortBaudRate(AsyncSerialPortPair.SERVER));
                         portPair.sendMessage(scanner.next(), AsyncSerialPortPair.CLIENT);
-                        TimeUnit.MILLISECONDS.sleep(5);
+                        TimeUnit.MILLISECONDS.sleep(10);
                         break;
                     case 3:
                         portPair.setBaudRate(SerialPortImpl.BAUD_RATE_110,

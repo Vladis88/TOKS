@@ -7,7 +7,6 @@ public class Main {
     public static void main(String[] args) {
         ControllerApp controllerApp = new ControllerApp(new AsyncSerialPortPair(new SerialPortImpl("COM1"),
                 new SerialPortImpl("COM2")));
-
         try {
             controllerApp.start();
         } catch (Exception e) {
